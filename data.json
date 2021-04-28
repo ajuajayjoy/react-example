@@ -1,0 +1,32 @@
+{
+  "list": [
+    {
+      "id": 1,
+      "Movie": "Ain’t No Sunshine",
+      "title": "Ain’t No Sunshine",
+      "song_length": "4.50",
+      "Singer": "typicode"
+    },
+    {
+      "id": 2,
+      "Movie": "json-server",
+      "title": "Ain’t No Sunshine",
+      "song_length": "4.50",
+      "Singer": "typicode"
+    },
+    {
+      "Movie": "kjsadkjsadnsad",
+      "title": "kjasdbkjsbandkj",
+      "songlength": "sadbsakjdnsad",
+      "singer": "kjasdnkjsand",
+      "id": 3
+    },
+    {
+      "Movie": "kjsadkjsadnsad",
+      "title": "kjasdbkjsbandkj",
+      "songlength": "sadbsakjdnsad",
+      "singer": "kjasdnkjsand",
+      "id": 4
+    }
+  ]
+}
