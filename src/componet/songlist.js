@@ -14,27 +14,15 @@ export class Songlist extends Component {
     }
 
   }
-  onChnagemovie(e) {
-    this.setState({
-      movie: e.target.value
-    });
+
+  onChangeAction(e){
+    this.setState(
+      this.setState({[e.target.name]: e.target.value})
+    );
   }
-  onChnagetitle(e) {
-    this.setState({
-      title: e.target.value
-    });
-  }
-  onChnagesonglength(e) {
-    this.setState({
-      songlength: e.target.value
-    });
-  }
-  onChnagesinger(e) {
-    this.setState({
-      singer: e.target.value
-    });
-  }
+
   saveTutorial() {
+
     console.log(this.state);
 
     const request = {
@@ -42,19 +30,20 @@ export class Songlist extends Component {
       headers: { 'Content-Type': 'application/json' },
       body:
         JSON.stringify({
-          Movie: "kjsadkjsadnsad",
-          title: "kjasdbkjsbandkj",
-          songlength: "sadbsakjdnsad",
-          singer: "kjasdnkjsand"
+          Movie: this.state.movies,
+          title: this.state.title,
+          songlength:  this.state.length,
+          singer: this.state.singer
         })
     };
-    fetch(" http://localhost:3030/list", request)
+    fetch("http://localhost:3030/list", request)
     .then(res => res.json())
     .then(data => { });
+    this.getData();
 
   }
 
-  componentDidMount() {
+  getData(){
     this.setState(() => {
       fetch("http://localhost:3030/list")
       .then(res => res.json())
@@ -68,7 +57,10 @@ export class Songlist extends Component {
       )
       .catch(console.log)
     });
+  }
 
+  componentDidMount() {
+    this.getData();
   }
 
   render() {
@@ -98,10 +90,10 @@ export class Songlist extends Component {
         </table>
 
         <div class="new-data">
-          <label>Movie Name :</label> <input type="text" onChange={this.onChnagemovie.bind(this)} ></input><br></br>
-          <label>Title :</label> <input type="text" onChange={this.onChnagetitle.bind(this)} ></input><br></br>
-          <label>Song length :</label> <input type="text" onChange={this.onChnagesonglength.bind(this)} ></input><br></br>
-          <label>Singer :</label> <input type="text" onChange={this.onChnagesinger.bind(this)}></input><br></br>
+          <label>Movie Name :</label> <input type="text" name="movies" onChange={this.onChangeAction.bind(this)} ></input><br></br>
+          <label>Title :</label> <input type="text" name="title" onChange={this.onChangeAction.bind(this)} ></input><br></br>
+          <label>Song length :</label> <input type="text" name="length" onChange={this.onChangeAction.bind(this)} ></input><br></br>
+          <label>Singer :</label> <input type="text" name="singer" onChange={this.onChangeAction.bind(this)}></input><br></br>
           <button onClick={this.saveTutorial.bind(this)}>Submit </button>
         </div>
       </div>
